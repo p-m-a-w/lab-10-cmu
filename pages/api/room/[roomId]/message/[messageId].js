@@ -10,7 +10,7 @@ export default function roomIdMessageIdRoute(req, res) {
     if (room != null) {
       const message = room.messages.find(message => messageId === message.messageId);
       if (message != null) {
-        room.messages.pop(message);
+        room.messages = room.messages.filter(message => message.messageId !== messageId);
         writeDB(rooms);
         return res.status(200).send(JSON.stringify({
           ok: true,
