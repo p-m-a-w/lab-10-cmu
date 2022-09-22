@@ -28,6 +28,10 @@ export default function roomIdMessageRoute(req, res) {
         text: text,
       };
       room.messages.push(response.message);
+    } else if (room == null) {
+      code = 404;
+      response.ok = false;
+      response.message = 'Invalid room id';
     } else {
       code = 400;
       response.ok = false;

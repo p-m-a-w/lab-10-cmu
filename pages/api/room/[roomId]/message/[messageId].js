@@ -15,11 +15,17 @@ export default function roomIdMessageIdRoute(req, res) {
         return res.status(200).send(JSON.stringify({
           ok: true,
         }))
+      } else {
+        return res.status(404).send(JSON.stringify({
+          ok: false,
+          message: 'Invalid message id',
+        }))
       }
+    } else {
+      return res.status(404).send(JSON.stringify({
+        ok: false,
+        message: 'Invalid room id',
+      }))
     }
-    return res.status(404).send(JSON.stringify({
-      ok: false,
-      message: 'Invalid message id',
-    }))
   }
 }
